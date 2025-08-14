@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { AuthProvider } from "./contexts/AuthContext";
 import Layout from "./components/Layout";
 import NewsSection from "./components/NewsSection";
 import MarketWidget from "./components/MarketWidget";
@@ -7,6 +9,7 @@ import Pagination from "./components/Pagination";
 import WeatherWidget from "./components/WeatherWidget";
 import CategoryPage from "./pages/CategoryPage";
 import DailyNewsPage from "./pages/DailyNewsPage";
+import SharedNewsPage from "./pages/SharedNewsPage";
 import { fetchTopHeadlines, searchNews } from "./services/newsAPI";
 
 function Home() {
@@ -80,40 +83,53 @@ function Home() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-      <Route
-        path="/category/:category"
-        element={
-          <Layout>
-            <CategoryPage />
-          </Layout>
-        }
-      />
+          <Route
+            path="/category/:category"
+            element={
+              <Layout>
+                <CategoryPage />
+              </Layout>
+            }
+          />
 
-      <Route
-        path="/daily-news"
-        element={
-          <Layout>
-            <DailyNewsPage />
-          </Layout>
-        }
-      />
+          <Route
+            path="/daily-news"
+            element={
+              <Layout>
+                <DailyNewsPage />
+              </Layout>
+            }
+          />
 
-      <Route
-        path="*"
-        element={
-          <Layout>
-            <div className="py-16 w-full">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold">Page not found</h2>
-                <p className="mt-2 text-gray-500">Try using the navigation above.</p>
-              </div>
-            </div>
-          </Layout>
-        }
-      />
-    </Routes>
+          <Route
+            path="/shared-news"
+            element={
+              <Layout>
+                <SharedNewsPage />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="*"
+            element={
+              <Layout>
+                <div className="py-16 w-full">
+                  <div className="text-center">
+                    <h2 className="text-2xl font-bold">Page not found</h2>
+                    <p className="mt-2 text-gray-500">Try using the navigation above.</p>
+                  </div>
+                </div>
+              </Layout>
+            }
+          />
+        </Routes>
+      </AuthProvider>
+    </GoogleOAuthProvider>
   );
 }

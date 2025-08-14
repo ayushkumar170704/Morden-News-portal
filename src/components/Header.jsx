@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import AuthButton from "./AuthButton";
 
 export default function Header({ onSearch }) {
   const [query, setQuery] = useState("");
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
   const location = useLocation();
   const debounceRef = useRef(null);
+  const { isAuthenticated } = useAuth();
 
-  // Dark mode logic + initial sync from localStorage
   useEffect(() => {
     const root = document.documentElement;
     if (theme === "dark") root.classList.add("dark");
@@ -20,10 +22,9 @@ export default function Header({ onSearch }) {
     onSearch?.(query);
   };
 
-  // Debounce search: triggers 400ms after typing stops
   useEffect(() => {
     if (!onSearch) return;
-    if (!query) return; // don't trigger empty search automatically
+    if (!query) return;
     clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
       onSearch(query);
@@ -33,12 +34,13 @@ export default function Header({ onSearch }) {
 
   const nav = [
     { to: "/", label: "Top" },
-    { to: "/daily-news", label: "Today’s News" },
+    { to: "/daily-news", label: "Today's News" },
+    { to: "/shared-news", label: "Community News" },
     { to: "/category/technology", label: "Technology" },
     { to: "/category/sports", label: "Sports" },
     { to: "/category/business", label: "Business" },
     { to: "/category/entertainment", label: "Entertainment" },
-    { to: "/#market", label: "Market" }, // same-page anchor
+    { to: "/#market", label: "Market" },
   ];
 
   const isActive = (to) => {
@@ -47,7 +49,6 @@ export default function Header({ onSearch }) {
   };
 
   const goToMarket = (e) => {
-    // Smooth scroll to the market section if on home
     if (location.pathname === "/") {
       e.preventDefault();
       const el = document.getElementById("market");
@@ -58,14 +59,16 @@ export default function Header({ onSearch }) {
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md dark:from-gray-900 dark:to-gray-800">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
-        {/* Top Row */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-          {/* Logo */}
-          <Link to="/" className="text-3xl font-bold tracking-wide">📰 News Portal</Link>
+          <Link to="/" className="text-3xl font-bold tracking-wide">
+            📰 News Portal
+          </Link>
 
-          {/* Search + Dark Mode */}
-          <div className="flex items-center gap-2 w-full md:w-auto">
-            <form onSubmit={handleSubmit} className="flex flex-1 md:flex-initial rounded-lg overflow-hidden shadow-lg">
+          <div className="flex items-center gap-4 w-full md:w-auto">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-1 md:flex-initial rounded-lg overflow-hidden shadow-lg"
+            >
               <input
                 type="text"
                 placeholder="Search latest news..."
@@ -83,19 +86,29 @@ export default function Header({ onSearch }) {
               </button>
             </form>
 
-            {/* Dark Mode Toggle */}
             <button
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-              className="ml-2 px-3 py-2 bg-gray-200 dark:bg-gray-700 rounded-md text-sm"
+              className="px-3 py-2 bg-gray-200 dark:bg-gray-700 rounded-md text-sm"
               title="Toggle dark mode"
               aria-pressed={theme === "dark"}
             >
               {theme === "light" ? "🌙" : "☀️"}
             </button>
+
+            {/* Share News Button - Only visible when authenticated */}
+            {isAuthenticated && (
+              <Link
+                to="/shared-news"
+                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition text-sm font-medium whitespace-nowrap"
+              >
+                📰 Share News
+              </Link>
+            )}
+
+            <AuthButton />
           </div>
         </div>
 
-        {/* Navigation */}
         <nav className="flex gap-4 mt-4 text-sm overflow-x-auto whitespace-nowrap">
           {nav.map((n) =>
             n.to.startsWith("/#") ? (
