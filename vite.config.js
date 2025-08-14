@@ -16,6 +16,13 @@ export default defineConfig({
   },
   server: {
     port: 5173, // change if needed
-    open: true  // auto-open browser on dev start
+    open: true, // auto-open browser on dev start
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   }
 })
