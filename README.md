@@ -155,9 +155,7 @@ text
 <img width="1920" height="1080" alt="Screenshot (29)" src="https://github.com/user-attachments/assets/0ffe8dd3-577d-48c2-99e7-469b503976ba" />
 ![Uploading Screenshot (29).png…]()
 <img width="1920" height="1080" alt="Screenshot (28)" src="https://github.com/user-attachments/assets/640c37aa-489f-4353-bf2d-a4ec530bf480" />
-<img width="1920" height="1080" alt="Screenshot (22)" src="https://github.com/user-attachments/assets/40810a14-f158-47cc-9535-3ff57e6c2348" />
-<img width="1920" height="1080" alt="Screenshot (28)" src="https://github.com/user-attachments/assets/6fd98351-42bb-4dcd-a66b-6076eb5dff69" />
-<img width="1920" height="1080" alt="Screenshot (27)" src="https://github.com/user-attachments/assets/ed79d3d4-502f-497d-b649-5a27947ee4e5" />
+
 
 1. Fork the repo.
 2. Create a feature branch:
