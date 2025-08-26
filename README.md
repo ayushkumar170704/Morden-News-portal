@@ -143,21 +143,13 @@ text
 ---
 ## 🤝 ScreenShots
 
-<img width="1920" height="1080" alt="Screenshot (25)" src="https://github.com/user-attachments/assets/5e662113-a8e8-4e11-b127-3c349190d5b5" />
-<img width="1920" height="1080" alt="Screenshot (26)" src="https://github.com/user-attachments/assets/f0771a87-7257-47cd-ae9f-4727311318f9" />
 <img width="1920" height="1080" alt="Screenshot (24)" src="https://github.com/user-attachments/assets/8100164f-f190-4e97-8e27-1ac6a3ad05d2" />
-<img width="1920" height="1080" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/d303a41c-9c7f-4e28-a541-9dabe31faaa1" />
-<img width="1920" height="1080" alt="Screenshot (26)" src="https://github.com/user-attachments/assets/0d512682-18d9-4e1d-b08e-48299e2031f1" />
+
 <img width="1920" height="1080" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/e06c5711-e603-4580-9346-259c347476eb" />
-<img width="1920" height="1080" alt="Screenshot (24)" src="https://github.com/user-attachments/assets/f76ef940-c801-4da8-bd91-becacf8d5741" />
-<img width="1920" height="1080" alt="Screenshot (23)" src="https://github.com/user-attachments/assets/2b1fdce7-2f6f-4c7c-9f04-b03f8a354e41" />
+
 <img width="1920" height="1080" alt="Screenshot (26)" src="https://github.com/user-attachments/assets/dc09844f-06a1-4c04-83fd-4736da6efec9" />
 
 <img width="1920" height="1080" alt="Screenshot (29)" src="https://github.com/user-attachments/assets/e2788671-fb4b-40aa-85d0-4b339856a921" />
-<img width="1920" height="1080" alt="Screenshot (29)" src="https://github.com/user-attachments/assets/314277e3-7023-4d28-8eff-db4d84de9a13" />
-
-
-
 ## 🤝 Contributing![Uploading Screenshot (21).png…]()
 ![Uploading Screenshot (23).png…]()
 <img width="1920" height="1080" alt="Screenshot (29)" src="https://github.com/user-attachments/assets/0ffe8dd3-577d-48c2-99e7-469b503976ba" />
